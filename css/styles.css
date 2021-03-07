@@ -1,35 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-@import "reset.css"
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+/* css reset  */
+@import "reset.css";
+/* css status-bar  */
+@import "status-bar.css";
 body {
-    font-family: font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
-.status-bar {
-    display: flex;
-    justify-content: center;
+.welcome-header {
+  margin-top: 90px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.status-bar__column {
-    width: 33%;
+/* 만들려는 이미지를 보고 px 측정한 값을 적용하였는데 %로 해도 되고 자유임  */
+.welcome-header__title {
+  margin-bottom: 20px;
+  font-size: 25px;
 }
-/* justify-content spacebetween 하게 되면 지금 column들의 글자수 때문에 width값이 다 다르므로 
-시간이 센터에 오지 않고 기묘하게 살짝 비켜감 -> 이를 막기 위해 css hack을 사용하기로 함. 
-1) status-bar__column (모든 칼럼)에 width:33 %를 지정하고
-2) 2번째 child인 시간부분을 flex center하여 중앙에 배치함 
-3) 그리고 마지막 child인 배터리 부분에 flex하고 justify를 flex - end로 배치,
-그럼 배터리 부분이 끝에 가게 되고 
-아이콘 부분이 약간 위로 가있어서 align items center를 적용해 수평을 맞춰줌*/
-.status-bar__column:first-child span {
-    margin-right: 5px;
+/* welcome to kokoa와 그 아래 if you~ 텍스트 사이 공간보면 50px임 마진바텀  */
+.welcome-header__text {
+  width: 60%;
+  opacity: 0.7;
 }
-.status-bar__column:nth-child(2) {
-    display: flex;
-    justify-content: center;
-}
-.status-bar__column:last-child {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-.status-bar__column .fa-battery-full {
-    margin: 0px 5px;
-/* 마진값 상하 0 좌우 5px */
-}
+/* width값을 60%로 지정하여 2줄이 되도록 해주었다 width값을 %로 지정할때 width %는 기존의 크기를 가진
+부모 컨테이너 너비의 %가 되도록 요소를 정의한다 (부모 컨테이너 크기의 %임) 여기서 부모는 .welcome-header 이므로
+이 부모는 block 요소라 화면을 다 차지한다 그래서 화면에 대해서 60%라는 것임 틀릴수도 있는데..일단
+이렇게 알아두고 나중에 이게 아니면 다시 개념잡을 것  
+https://css-tricks.com/almanac/properties/w/width/ 
+https://stackoverflow.com/questions/3538875/css-div-width-percentage-and-padding-without-breaking-layout
+ */
