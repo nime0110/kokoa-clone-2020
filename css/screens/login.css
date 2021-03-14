@@ -1,0 +1,93 @@
+.welcome-header {
+  margin: 90px 0px;
+  /* top+bottom px / left+light px 축약형  */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+}
+/* 만들려는 이미지를 보고 px 측정한 값을 적용하였는데 %로 해도 되고 자유임  */
+.welcome-header__title {
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+/* welcome to kokoa와 그 아래 if you~ 텍스트 사이 공간보면 50px임 마진바텀  */
+.welcome-header__text {
+  width: 60%;
+  opacity: 0.7;
+}
+/* width값을 60%로 지정하여 2줄이 되도록 해주었다 width값을 %로 지정할때 width %는 기존의 크기를 가진
+부모 컨테이너 너비의 %가 되도록 요소를 정의한다 (부모 컨테이너 크기의 %임) 여기서 부모는 .welcome-header 이므로
+이 부모는 block 요소라 화면을 다 차지한다 그래서 화면에 대해서 60%라는 것임 틀릴수도 있는데..일단
+이렇게 알아두고 나중에 이게 아니면 다시 개념잡을 것  
+https://css-tricks.com/almanac/properties/w/width/ 
+https://stackoverflow.com/questions/3538875/css-div-width-percentage-and-padding-without-breaking-layout
+ */
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px;
+}
+#login-form input {
+  border: none;
+  padding: 15px 0px;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+/* ---> #login-form의 모든 input에 적용되므로 margin-bottom값은
+log in 에도 적용된다~  */
+#login-form input:not([type="submit"]) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease-in-out;
+}
+/* attribute selector css -> [type="subit"] type이 submit 인 코드 선택 
+:not; 은 무언가가 적용되는 걸 원치 않을때에 사용한다.
+:not (seleter) {style property}
+ex. body:not(p) {color:red} = body안에서 p가 아닌 글자색이 red가 된다. 
+#login-form input:not([type="submit"]) = login-form의 input중 type이 submit이 아닌 모든 input에 적용한다
+->submit만 빼고! 스타일을 적용하고 싶을 떄!!! 어느 한것만 빼고 스타일 적용하고 싶을 때!!! 사용. 
+not 복수 사용 = > ex input:not([type="radio"]):not([type="checkbox"]) {} 이런식
+*/
+#login-form input::placeholder {
+  color: var(--yellow);
+}
+/* rgba로 오퍼시티... 를 더할수 있네... */
+/* login-form이라는 id를 가진 form 안에 있는 input들에만 값이 적용된다(자식요소 선택자) */
+/* ----원래 input 클릭시 자동으로 outline이 상하좌우 생성되는데,
+이거좀 구려서 
+이부분을 reset css style파일에서 outline:none; 으로 지정하여
+모든 input 클릭시 아웃라인 생기지 않도록 했다 
+input:focus {
+  outline: none;
+}
+코드 -----  */
+#login-form input:focus {
+  border-color: var(--yellow);
+}
+#login-form input[type="submit"] {
+  background-color: var(--yellow);
+  cursor:pointer;
+  padding: 20px 0px;
+  border-radius: 8px;
+}
+#login-form a {
+  text-align: center;
+  text-decoration: none;
+  color:inherit;
+  font-size: 13px;
+}
+/* css 전역에서 사용이 가능한 변수 root를 사용하였고 (별도 css파일-표시를
+위한 variables.css 생성후 @import 꼭!!)
+root를 사용할때는 꼭 var(지정한 값);
+사용자 지정 속성은 전용 표기법을 사용해 정의하고, 
+(--main-color: black;) 
+:root {--yellow: #색상코드}
+var() 함수를 사용해 접근할 수 있음 (color: var(--main-color);)
+var를 사용할 경우 중복되는 색상값을 한번에 변경할 수 있다. 물론 css 상위 속성으로 
+중복 및 반복되는 것을 옮겨서 css를 별도 지정해줄수도 있지만-내가 자주하는거- 보다 
+복잡한 프로젝트를 진행할 때는 변수를 사용하는 것이 더 도움이 된다.
+결론 = :root 의사 클래스에 사용자 지정 속성을 선언하고, 필요한 곳에서 그 속성을 참조함으로써 
+반복 코드의 필요를 줄일 수 있습니다.
+*/
