@@ -4,8 +4,13 @@
 @import "variables.css";
 /* component  */
 @import "components/status-bar.css";
+@import "components/nav-bar.css";
 /* screens  */
 @import "screens/login.css";
 body {
   font-family: "Open Sans", sans-serif;
 }
+/* 
+순서를 지키는것이 중요!!
+reset 하고 variables.css를 먼저
+import 시켜야 우선적용 된다 폭포식인거 기억 */
